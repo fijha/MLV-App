@@ -322,7 +322,7 @@ void applyLLRawProcObject(mlvObject_t * video, uint16_t * raw_image_buff, size_t
         raw_info.active_area.y2 = raw_info.height;
 
         /* detect if raw data is restricted to imaginary 8-12bit levels */
-        if (raw_info.white_level < 15000)
+        if (raw_info.white_level < raw_info.black_level + (1<<13))
         {
 #ifndef STDOUT_SILENT
             printf("\nScaling raw data range...\n");
